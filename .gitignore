@@ -1,0 +1,6 @@
+backend/.env
+.testRigor/ai_logs
+.testRigor/application_logs
+.testRigor/test_cases
+.testRigor/retest.log
+.testRigor/all_test_cases.yaml

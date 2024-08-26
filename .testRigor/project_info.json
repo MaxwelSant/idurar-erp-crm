@@ -1,0 +1,13 @@
+{
+    "name": "Idurar CRM",
+    "description": "CRM system for managing customer data",
+    "database": "No Database",
+    "connection_string": "",
+    "entry_point": "http://localhost:3000",
+    "process_ports": [
+        8888,
+        3000
+    ],
+    "features": [],
+    "issues": []
+}
