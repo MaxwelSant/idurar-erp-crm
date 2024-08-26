@@ -1,0 +1,10 @@
+
+        Make a windows script that
+        a) installs dependencies
+        b) runs all necessary parts of the codebase (in parallel if necessary)
+
+        
+        Avoid `start cmd /k` commands. just execute direct in the script
+
+        Prefer Use call: The call command ensures that the batch file continues to the next command after executing a program.
+        
