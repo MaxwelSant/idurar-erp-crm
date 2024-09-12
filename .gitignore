@@ -4,3 +4,4 @@ backend/.env
 .testRigor/test_cases
 .testRigor/retest.log
 .testRigor/all_test_cases.yaml
+.testRigor/test_cases_sample
