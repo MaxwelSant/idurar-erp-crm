@@ -225,6 +225,8 @@ function FormElement({ field, feedback, setFeedback }) {
       name={field.name}
       rules={[
         {
+          required: true,
+          message: translate('Country field is required'),
           required: field.required || false,
           type: filedType[field.type] ?? 'any',
         },
