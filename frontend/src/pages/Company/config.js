@@ -17,6 +17,8 @@ export const fields = {
   },
   country: {
     type: 'country',
+    required: true, // Adding required validation to ensure the field is validated as required
+    label: 'Country', // Ensure label is set for error messages to be displayed correctly
   },
   phone: {
     type: 'phone',
