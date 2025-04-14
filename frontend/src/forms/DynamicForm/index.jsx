@@ -229,6 +229,16 @@ function FormElement({ field, feedback, setFeedback }) {
           type: filedType[field.type] ?? 'any',
         },
       ]}
+      rules={[
+        {
+          required: true,
+          message: translate('Country field is required'),
+        },
+        {
+          required: field.required || false,
+          type: filedType[field.type] ?? 'any',
+        },
+      ]}
     >
       <Select
         showSearch
