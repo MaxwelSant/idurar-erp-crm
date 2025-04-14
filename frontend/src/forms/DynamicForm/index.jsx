@@ -379,6 +379,7 @@ function FormElement({ field, feedback, setFeedback }) {
           {
             required: field.required || false,
             type: filedType[field.type] ?? 'any',
+            message: field.validationMessage || `${field.label} is required`,
           },
         ]}
         valuePropName={field.type === 'boolean' ? 'checked' : 'value'}
