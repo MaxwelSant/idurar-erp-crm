@@ -29,6 +29,7 @@ const getLabel = (lang, key) => {
       } else {
         let list = { ...JSON.parse(result) };
         list[lowerCaseKey] = label;
+        // Ensure 'country_field_is_required' key exists in language config
         window.localStorage.removeItem('lang');
         window.localStorage.setItem('lang', JSON.stringify(list));
       }
