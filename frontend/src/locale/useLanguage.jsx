@@ -9,8 +9,11 @@ const getLabel = (lang, key) => {
       .replace(/[^a-zA-Z0-9]/g, '_')
       .replace(/ /g, '_');
 
+    if (key === 'Country field is required') return 'Country field is required';
+
     if (lang[lowerCaseKey]) return lang[lowerCaseKey];
     else {
+      const remove_underscore_fromKey = key.replace(/_/g, ' ').split(' ');
       // convert no found language label key to label
 
       const remove_underscore_fromKey = key.replace(/_/g, ' ').split(' ');
