@@ -269,6 +269,13 @@ function FormElement({ field, feedback, setFeedback }) {
             type: filedType[field.type] ?? 'any',
           },
         ]}
+        rules={[
+          {
+            required: field.required || false,
+            type: filedType[field.type] ?? 'any',
+            message: translate(`${field.label}_is_required`), // Proper error message
+          },
+        ]}
       >
         <AutoCompleteAsync
           entity={field.entity}
