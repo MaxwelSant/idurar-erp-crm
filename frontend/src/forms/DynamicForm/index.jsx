@@ -266,6 +266,8 @@ function FormElement({ field, feedback, setFeedback }) {
         rules={[
           {
             required: field.required || false,
+            required: field.required || false,
+            message: `${translate(field.label)} field is required`, // Display a dynamic error message
             type: filedType[field.type] ?? 'any',
           },
         ]}

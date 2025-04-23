@@ -17,6 +17,7 @@ export const fields = {
   },
   country: {
     type: 'country',
+    required: true, // Ensure the country field is required
   },
   phone: {
     type: 'phone',
