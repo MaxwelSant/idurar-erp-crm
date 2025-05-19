@@ -2,6 +2,7 @@ export const fields = {
   name: {
     type: 'string',
     required: true,
+    label: 'Company - Name',
   },
   mainContact: {
     type: 'search',
