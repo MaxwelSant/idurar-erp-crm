@@ -31,12 +31,14 @@ export default function CreateForm({ config, formElements, withUpload = false })
     // }, {});
 
     dispatch(crud.create({ entity, jsonData: fieldsValue, withUpload }));
+    dispatch(crud.currentItem({ data: fieldsValue })); // Ensure current item is updated
   };
 
   useEffect(() => {
     if (isSuccess) {
       readBox.open();
       collapsedBox.open();
+      panel.open();
       panel.open();
       form.resetFields();
       dispatch(crud.resetAction({ actionType: 'create' }));
