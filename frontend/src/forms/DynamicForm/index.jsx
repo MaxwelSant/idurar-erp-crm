@@ -44,6 +44,10 @@ function FormElement({ field, feedback, setFeedback }) {
   const money = useMoney();
   const { dateFormat } = useDate();
 
+  const getLabelWithAsterisk = (label, isRequired) => {
+    return isRequired ? `${label} *` : label;
+  };
+
   const { TextArea } = Input;
 
   const SelectComponent = () => (
