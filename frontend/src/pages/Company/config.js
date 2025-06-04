@@ -20,6 +20,8 @@ export const fields = {
   },
   phone: {
     type: 'phone',
+    required: true,
+    label: '* Phone',
   },
   email: {
     type: 'email',
