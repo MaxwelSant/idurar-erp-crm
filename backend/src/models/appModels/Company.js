@@ -118,6 +118,7 @@ const schema = new mongoose.Schema({
   country: {
     type: String,
     trim: true,
+    required: true,
   },
   phone: {
     type: String,
@@ -137,6 +138,7 @@ const schema = new mongoose.Schema({
     type: String,
     trim: true,
     lowercase: true,
+    required: true,
   },
   otherEmail: [
     {
