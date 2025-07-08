@@ -219,44 +219,51 @@ function FormElement({ field, feedback, setFeedback }) {
       </Select>
     </Form.Item>
   );
-  const CountryComponent = () => (
-    <Form.Item
-      label={translate(field.label)}
-      name={field.name}
-      rules={[
-        {
-          required: field.required || false,
-          type: filedType[field.type] ?? 'any',
-        },
-      ]}
-    >
-      <Select
-        showSearch
-        defaultValue={field.defaultValue}
-        optionFilterProp="children"
-        filterOption={(input, option) =>
-          (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-        }
-        filterSort={(optionA, optionB) =>
-          (optionA?.label ?? '').toLowerCase().startsWith((optionB?.label ?? '').toLowerCase())
-        }
-        style={{
-          width: '100%',
-        }}
+  const CountryComponent = () => {
+    // Handle labels with asterisk for required fields
+    const displayLabel = field.label.startsWith('*') 
+      ? `* ${translate(field.label.substring(1).trim())}`
+      : translate(field.label);
+    
+    return (
+      <Form.Item
+        label={displayLabel}
+        name={field.name}
+        rules={[
+          {
+            required: field.required || false,
+            type: filedType[field.type] ?? 'any',
+          },
+        ]}
       >
-        {countryList.map((language) => (
-          <Select.Option
-            key={language.value}
-            value={language.value}
-            label={translate(language.label)}
-          >
-            {language?.icon && language?.icon + ' '}
-            {translate(language.label)}
-          </Select.Option>
-        ))}
-      </Select>
-    </Form.Item>
-  );
+        <Select
+          showSearch
+          defaultValue={field.defaultValue}
+          optionFilterProp="children"
+          filterOption={(input, option) =>
+            (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+          }
+          filterSort={(optionA, optionB) =>
+            (optionA?.label ?? '').toLowerCase().startsWith((optionB?.label ?? '').toLowerCase())
+          }
+          style={{
+            width: '100%',
+          }}
+        >
+          {countryList.map((language) => (
+            <Select.Option
+              key={language.value}
+              value={language.value}
+              label={translate(language.label)}
+            >
+              {language?.icon && language?.icon + ' '}
+              {translate(language.label)}
+            </Select.Option>
+          ))}
+        </Select>
+      </Form.Item>
+    );
+  };
 
   const SearchComponent = () => {
     return (

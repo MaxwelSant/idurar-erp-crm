@@ -46,7 +46,7 @@ export default function CreateForm({ config, formElements, withUpload = false })
 
   return (
     <Loading isLoading={isLoading}>
-      <Form form={form} layout="vertical" onFinish={onSubmit}>
+      <Form form={form} layout="vertical" onFinish={onSubmit} requiredMark={true}>
         {formElements}
         <Form.Item>
           <Button type="primary" htmlType="submit">
