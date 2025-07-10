@@ -118,6 +118,7 @@ const schema = new mongoose.Schema({
   country: {
     type: String,
     trim: true,
+    required: true,
   },
   phone: {
     type: String,
