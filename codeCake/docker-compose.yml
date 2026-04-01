@@ -1,0 +1,78 @@
+services:
+  mongo:
+    image: mongo
+    container_name: idurar-mongo
+    expose:
+      - 27017
+    ports:
+      - "21060:27017"
+    volumes:
+      - mongodb_data:/data/db
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "3"
+        max-size: "10m"
+    networks:
+      - server-mongo
+    healthcheck:
+      test: ["CMD", "mongosh", "--host", "localhost:27017", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  backend:
+    build: ../backend
+    container_name: idurar-backend
+    volumes:
+      - ../backend:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "21061:8888"
+    environment:
+      NODE_ENV: development
+      DATABASE: mongodb://mongo:27017/local-idurar-erp-crp
+      PORT: "8888"
+      NODE_OPTIONS: --openssl-legacy-provider
+      JWT_SECRET: secret_key_1234
+      USE_MOCK_DB: "false"
+    command: sh -c "npm run setup && npm run dev"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "3"
+        max-size: "10m"
+    networks:
+      - server-mongo
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  frontend:
+    build: ../frontend
+    container_name: idurar-frontend
+    volumes:
+      - ../frontend:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "21062:3000"
+    environment:
+      NODE_ENV: development
+      NODE_OPTIONS: --openssl-legacy-provider
+      VITE_DEV_REMOTE: "remote"
+      VITE_BACKEND_SERVER: "http://localhost:21061/"
+      VITE_FILE_BASE_URL: "http://localhost:21061/"
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "3"
+        max-size: "10m"
+    depends_on:
+      - backend
+
+volumes:
+  mongodb_data:
+
+networks:
+  server-mongo:
