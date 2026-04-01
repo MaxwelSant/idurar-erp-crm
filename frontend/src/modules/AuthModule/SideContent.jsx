@@ -50,6 +50,7 @@ export default function SideContent() {
           </li>
         </ul>
         <Divider />
+        <Text style={{ display: 'block', textAlign: 'center' }}>codeCake AI Agent</Text>
         <div
           style={{
             display: 'flex',
