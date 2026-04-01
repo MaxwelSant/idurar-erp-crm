@@ -51,7 +51,7 @@ services:
 
   frontend:
     build: ../frontend
-    container_name: idurar-frontend
+    container_name: main_app_idurar-frontend
     volumes:
       - ../frontend:/usr/src/app
       - /usr/src/app/node_modules
