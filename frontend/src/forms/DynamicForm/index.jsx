@@ -48,12 +48,13 @@ function FormElement({ field, feedback, setFeedback }) {
 
   const SelectComponent = () => (
     <Form.Item
-      label={translate(field.label)}
+      label={field.required ? `* ${translate(field.label)}` : translate(field.label)}
       name={field.name}
       rules={[
         {
           required: field.required || false,
           type: filedType[field.type] ?? 'any',
+          message: field.required ? `${translate(field.label)} field is required` : '',
         },
       ]}
     >
@@ -77,12 +78,13 @@ function FormElement({ field, feedback, setFeedback }) {
 
   const SelectWithTranslationComponent = () => (
     <Form.Item
-      label={translate(field.label)}
+      label={field.required ? `* ${translate(field.label)}` : translate(field.label)}
       name={field.name}
       rules={[
         {
           required: field.required || false,
           type: filedType[field.type] ?? 'any',
+          message: field.required ? `${translate(field.label)} field is required` : '',
         },
       ]}
     >
@@ -106,12 +108,13 @@ function FormElement({ field, feedback, setFeedback }) {
   );
   const SelectWithFeedbackComponent = ({ feedbackValue, lanchFeedback }) => (
     <Form.Item
-      label={translate(field.label)}
+      label={field.required ? `* ${translate(field.label)}` : translate(field.label)}
       name={field.name}
       rules={[
         {
           required: field.required || false,
           type: filedType[field.type] ?? 'any',
+          message: field.required ? `${translate(field.label)} field is required` : '',
         },
       ]}
     >
@@ -132,12 +135,13 @@ function FormElement({ field, feedback, setFeedback }) {
   );
   const ColorComponent = () => (
     <Form.Item
-      label={translate(field.label)}
+      label={field.required ? `* ${translate(field.label)}` : translate(field.label)}
       name={field.name}
       rules={[
         {
           required: field.required || false,
           type: filedType[field.type] ?? 'any',
+          message: field.required ? `${translate(field.label)} field is required` : '',
         },
       ]}
     >
@@ -168,12 +172,13 @@ function FormElement({ field, feedback, setFeedback }) {
   );
   const TagComponent = () => (
     <Form.Item
-      label={translate(field.label)}
+      label={field.required ? `* ${translate(field.label)}` : translate(field.label)}
       name={field.name}
       rules={[
         {
           required: field.required || false,
           type: filedType[field.type] ?? 'any',
+          message: field.required ? `${translate(field.label)} field is required` : '',
         },
       ]}
     >
@@ -195,12 +200,13 @@ function FormElement({ field, feedback, setFeedback }) {
   );
   const ArrayComponent = () => (
     <Form.Item
-      label={translate(field.label)}
+      label={field.required ? `* ${translate(field.label)}` : translate(field.label)}
       name={field.name}
       rules={[
         {
           required: field.required || false,
           type: filedType[field.type] ?? 'any',
+          message: field.required ? `${translate(field.label)} field is required` : '',
         },
       ]}
     >
@@ -221,12 +227,13 @@ function FormElement({ field, feedback, setFeedback }) {
   );
   const CountryComponent = () => (
     <Form.Item
-      label={translate(field.label)}
+      label={field.required ? `* ${translate(field.label)}` : translate(field.label)}
       name={field.name}
       rules={[
         {
           required: field.required || false,
           type: filedType[field.type] ?? 'any',
+          message: field.required ? `${translate(field.label)} field is required` : '',
         },
       ]}
     >
@@ -261,7 +268,7 @@ function FormElement({ field, feedback, setFeedback }) {
   const SearchComponent = () => {
     return (
       <Form.Item
-        label={translate(field.label)}
+        label={field.required ? `* ${translate(field.label)}` : translate(field.label)}
         name={field.name}
         rules={[
           {
@@ -373,12 +380,13 @@ function FormElement({ field, feedback, setFeedback }) {
   else {
     return (
       <Form.Item
-        label={translate(field.label)}
+        label={field.required ? `* ${translate(field.label)}` : translate(field.label)}
         name={field.name}
         rules={[
           {
             required: field.required || false,
             type: filedType[field.type] ?? 'any',
+            message: field.required ? `${translate(field.label)} field is required` : '',
           },
         ]}
         valuePropName={field.type === 'boolean' ? 'checked' : 'value'}

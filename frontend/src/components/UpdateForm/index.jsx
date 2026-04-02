@@ -97,7 +97,7 @@ export default function UpdateForm({ config, formElements, withUpload = false })
   return (
     <div style={show}>
       <Loading isLoading={isLoading}>
-        <Form form={form} layout="vertical" onFinish={onSubmit}>
+        <Form form={form} layout="vertical" onFinish={onSubmit} requiredMark={false}>
           {formElements}
           <Form.Item
             style={{

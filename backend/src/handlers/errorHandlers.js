@@ -10,10 +10,29 @@ exports.catchErrors = (fn) => {
   return function (req, res, next) {
     return fn(req, res, next).catch((error) => {
       if (error.name == 'ValidationError') {
+        // Extract field-specific validation messages
+        let message = 'Required fields are not supplied';
+        const errors = error.errors;
+        
+        if (errors) {
+          // Get the first validation error
+          const firstErrorKey = Object.keys(errors)[0];
+          if (firstErrorKey && errors[firstErrorKey]) {
+            const fieldError = errors[firstErrorKey];
+            if (fieldError.kind === 'required') {
+              // Capitalize first letter of field name
+              const fieldName = firstErrorKey.charAt(0).toUpperCase() + firstErrorKey.slice(1);
+              message = `${fieldName} field is required`;
+            } else {
+              message = fieldError.message;
+            }
+          }
+        }
+        
         return res.status(400).json({
           success: false,
           result: null,
-          message: 'Required fields are not supplied',
+          message: message,
           controller: fn.name,
           error: error,
         });
