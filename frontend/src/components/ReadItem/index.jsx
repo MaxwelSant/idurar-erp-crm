@@ -20,6 +20,7 @@ export default function ReadItem({ config }) {
   const { state } = useCrudContext();
   const { isReadBoxOpen } = state;
   const [listState, setListState] = useState([]);
+  const [listState, setListState] = useState([]);
 
   if (fields) readColumns = [...dataForRead({ fields: fields, translate: translate })];
   useEffect(() => {
@@ -33,7 +34,7 @@ export default function ReadItem({ config }) {
       list.push({ propsKey, label: propsTitle, value: value });
     });
     setListState(list);
-  }, [currentResult]);
+  }, [currentResult, fields]); // Ensure it updates when fields change
 
   const show = isReadBoxOpen ? { display: 'block', opacity: 1 } : { display: 'none', opacity: 0 };
 
