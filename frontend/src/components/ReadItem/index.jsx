@@ -24,11 +24,17 @@ export default function ReadItem({ config }) {
   if (fields) readColumns = [...dataForRead({ fields: fields, translate: translate })];
   useEffect(() => {
     const list = [];
-    readColumns.map((props) => {
+    readColumns.forEach((props) => {
       const propsKey = props.dataIndex;
-      const propsTitle = props.title;
+      let propsTitle = props.title;
+      if (propsKey === 'name') {
+        propsTitle = 'Company - Name';
+      }
       const isDate = props.isDate || false;
       let value = valueByString(currentResult, propsKey);
+      if (propsKey === 'name') {
+        value = `Company - ${value}`;
+      }
       value = isDate ? dayjs(value).format(dateFormat) : value;
       list.push({ propsKey, label: propsTitle, value: value });
     });
