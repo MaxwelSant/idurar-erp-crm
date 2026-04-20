@@ -1,6 +1,7 @@
 export const fields = {
   name: {
     type: 'string',
+    label: '* Name',
     required: true,
   },
   mainContact: {
@@ -17,12 +18,15 @@ export const fields = {
   },
   country: {
     type: 'country',
+    label: '* Country',
+    required: true,
   },
   phone: {
     type: 'phone',
   },
   email: {
     type: 'email',
+    label: '* Email',
     required: true,
   },
   website: {
