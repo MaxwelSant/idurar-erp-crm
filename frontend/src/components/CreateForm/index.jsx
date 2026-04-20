@@ -38,6 +38,10 @@ export default function CreateForm({ config, formElements, withUpload = false })
       readBox.open();
       collapsedBox.open();
       panel.open();
+      // Ensure that the newly created company details are shown
+      setTimeout(() => {
+        dispatch(crud.read({ entity, id: data.result._id }));
+      }, 500);
       form.resetFields();
       dispatch(crud.resetAction({ actionType: 'create' }));
       dispatch(crud.list({ entity }));
