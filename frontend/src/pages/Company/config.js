@@ -1,6 +1,7 @@
 export const fields = {
   name: {
     type: 'string',
+    label: 'Company - Name', // Added label for the company name field
     required: true,
   },
   mainContact: {
