@@ -23,6 +23,7 @@ export default function DynamicForm({ fields, isUpdateForm = false }) {
 
         if ((isUpdateForm && !field.disableForUpdate) || !field.disableForForm) {
           field.name = key;
+        field.label = field.required ? `* ${field.label}` : field.label;
           if (!field.label) field.label = key;
           if (field.hasFeedback)
             return (
